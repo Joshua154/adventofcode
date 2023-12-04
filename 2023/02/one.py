@@ -25,7 +25,7 @@ def parseGames(raw):
     return result
 
 def main():
-    with open("./message.txt", "r", encoding="utf-8") as f:
+    with open("./input.txt", "r", encoding="utf-8") as f:
         raw = f.read()
     raw = raw.split("\n")
 
