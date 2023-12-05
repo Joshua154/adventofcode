@@ -60,19 +60,26 @@ def parseNumbers(numberList, data):
 
 
 def main():
-    with open("./input.txt", "r", encoding="utf-8") as f:
+    with open("./message.txt", "r", encoding="utf-8") as f:
         raw = f.read()
     raw = raw.split("\n")
 
     parse_numbers = parseNumbers(getNumberList(raw), raw)
 
     symbol_numbers = []
+    symbol_numbers2 = []
     for i in parse_numbers:
         sour = getSurroundingSymbols(raw, i["row"], i["xMin"], i["xMax"])
         print(i, sour)
         print("\n")
-        if(len(sour) > 0):
+        if (len(sour) > 0):
             symbol_numbers.append(int(i["number"]))
+    #         symbol_numbers2.append(i)
+    #
+    # symbol_numbers2.sort(key=lambda x: int(x["number"]))
+    # with open("./output.txt", "w", encoding="utf-8") as f:
+    #     for i in symbol_numbers2:
+    #         f.write(str(i["number"]) + ", y:" + str(i["row"]) + " x:" + str(i["xMin"]) + "-" + str(i["xMax"]) + "\n")
 
     print(sum(symbol_numbers))
 
