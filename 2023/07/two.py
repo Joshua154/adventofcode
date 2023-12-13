@@ -89,14 +89,43 @@ class Hand:
         #                     self.cards = tempCards
         #
         # self.cards = cards
-        # self.type = best
+        # self.type = best##
+
+        if("J" not in [x.value for x in self.cards]):
+            return
+
+        print("\n")
+        print([str(x.value) for x in self.cards])
+        best = self.get_type()
+        cards = self.cards.copy()
+        cards_ = list(set([y.value for y in self.cards]))
+        for first in cards_:
+            for second in cards_:
+                for third in cards_:
+                    for fourth in cards_:
+                        for fifth in cards_:
+                            tempCards = self.cards.copy()
+                            if self.cards[0].value == "J":
+                                self.cards[0].value = first
+                            if self.cards[1].value == "J":
+                                self.cards[1].value = second
+                            if self.cards[2].value == "J":
+                                self.cards[2].value = third
+                            if self.cards[3].value == "J":
+                                self.cards[3].value = fourth
+                            if self.cards[4].value == "J":
+                                self.cards[4].value = fifth
+
+                            print([str(x.value) for x in self.cards])
+                            if h.index(self.get_type()) > h.index(best):
+                                best = self.get_type()
+                                cards = self.cards.copy()
+                            self.cards = tempCards
+        self.cards = cards
+        self.type = self.get_type()
 
 
     def get_type(self):
-        # c = list(map(lambda x: x.getValue(), self.cards))
-        # for i in list(set(c)):
-        #     print(i, c.count(i))
-
         if self.isFiveOfKind():
             return "FiK"
         elif self.isFourOfKind():
