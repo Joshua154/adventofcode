@@ -1,11 +1,3 @@
-def sign(num):
-    if num > 0:
-        return 1
-    elif num < 0:
-        return -1
-    else:
-        return 0
-
 def main():
     with open("./input.txt", "r", encoding="utf-8") as f:
         raw = f.read()
